@@ -182,9 +182,15 @@ function Hero({ onSplashDone }) {
     fitText();
     el.textContent = "";
 
+    const snapToBottom = () => {
+      const elH = el.offsetHeight;
+      el.style.top = `calc(100% - ${elH + 28}px)`;
+    };
+
     const onResize = () => {
       el.textContent = "Finimundu";
       fitText();
+      if (splashDoneRef.current) snapToBottom();
     };
 
     window.addEventListener("resize", onResize);
@@ -200,7 +206,7 @@ function Hero({ onSplashDone }) {
         setTimeout(typeChar, i === splitAt ? 1200 : 110);
       } else {
         setTimeout(() => {
-          el.style.top = "calc(100% - 1.2em)";
+          snapToBottom();
           el.style.transform = "translateX(-50%)";
 
           setTimeout(() => {
@@ -363,6 +369,8 @@ function Hero({ onSplashDone }) {
           transform: "translate(-50%, -50%)",
           color: "#fff",
           zIndex: 11,
+          whiteSpace: "nowrap",
+          transition: "top 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       />
     </Box>
