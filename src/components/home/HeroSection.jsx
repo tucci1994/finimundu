@@ -133,11 +133,12 @@ const rows = 3;
 
 const baseImgStyle = {
   width: "100%",
-  height: "auto",
+  height: "100%",
   position: "absolute",
-  top: "50%",
+  top: 0,
   left: 0,
-  transform: "translateY(-50%)",
+  objectFit: "cover",
+  objectPosition: "center center",
   display: "block",
 };
 
@@ -324,7 +325,7 @@ function Hero({ onSplashDone }) {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "100dvh",
         position: "relative",
         overflow: "hidden",
         backgroundColor: "#000",
